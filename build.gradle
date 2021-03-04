@@ -1,3 +1,5 @@
+import groovy.json.JsonSlurper
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
@@ -5,7 +7,7 @@ buildscript {
     repositories {
         google()
         jcenter()
-        
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.3'
@@ -20,10 +22,21 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+def loadConfig = {
+    def configFile = file("./config.json")
+    println(':loadConfig:readFile --> ' + configFile)
+    def json = new JsonSlurper().parseText(configFile.text)
+    println(':loadConfig:parseText --> ' + json)
+    return json
+}
+ext {
+    localConfig = loadConfig()
 }
