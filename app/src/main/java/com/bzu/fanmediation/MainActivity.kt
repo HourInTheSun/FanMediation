@@ -36,15 +36,15 @@ class MainActivity : AppCompatActivity(), InterstitialAdListener {
             thread {
                 val startBidRequest: JSONObject = BiddingRequestModel().startBidRequest()
                 runOnUiThread {
-                    val code = startBidRequest.getInt("code")
-                    val response = startBidRequest.getJSONObject("data")
-                    textView.text = startBidRequest.toString()
-                    if (response.getString("platform_name") == BiddingServer.BIDDING_PLATFORM_FB) {
-                        val adFormat = response.getString("ad_format")
-                        if (adFormat == "interstitial") {
-                            loadInterstitial(response.getString("placement_id"))
-                        }
-                    }
+//                    val code = startBidRequest.getInt("code")
+//                    val response = startBidRequest.getJSONObject("data")
+//                    textView.text = startBidRequest.toString()
+//                    if (response.getString("platform_name") == BiddingServer.BIDDING_PLATFORM_FB) {
+//                        val adFormat = response.getString("ad_format")
+//                        if (adFormat == "interstitial") {
+//                            loadInterstitial(response.getString("placement_id"))
+//                        }
+//                    }
                 }
             }
         }

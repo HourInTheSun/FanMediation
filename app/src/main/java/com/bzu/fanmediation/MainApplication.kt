@@ -28,10 +28,10 @@ class MainApplication : Application() {
         appContext = this
         Constants.isTestMode = BuildConfig.DEBUG
         Thread {
-            val bidderToken =
-                BidderTokenProvider.getBidderToken(this@MainApplication)
-            Constants.bidderToken = bidderToken
-            Log.d(TAG, "getBidderToken: $bidderToken")
+//            val bidderToken =
+//                BidderTokenProvider.getBidderToken(this@MainApplication)
+//            Constants.bidderToken = bidderToken
+//            Log.d(TAG, "getBidderToken: $bidderToken")
             try {
                 val advertisingIdInfo =
                     AdvertisingIdClient.getAdvertisingIdInfo(this@MainApplication)

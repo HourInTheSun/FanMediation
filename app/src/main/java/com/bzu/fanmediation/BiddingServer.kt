@@ -34,7 +34,7 @@ class BiddingServer {
             requestObject.put("bundle_version", VERSION_NAME)
 
             // Device specifics
-            requestObject.put("ifa", Constants.googleAdID)
+            requestObject.put("ifa", Constants.googleAdID ?: "invalid")
             requestObject.put("coppa", 0)
             requestObject.put("dnt", 0)
 
@@ -43,7 +43,7 @@ class BiddingServer {
                 "buyer_tokens", JSONObject()
                     // Token for audience network from BidderTokenProvider.getBidderToken(context)
                     // This can be cached for the same app session
-                    .put("audience_network", Constants.bidderToken)
+                    .put("audience_network", Constants.bidderToken ?: "invalid")
             )
             return requestObject
         }
@@ -97,7 +97,7 @@ class BiddingServer {
             val requestObject = JSONObject()
             // Device information from client side
             val deviceObject = JSONObject()
-            deviceObject.put("ifa", Constants.googleAdID)
+            deviceObject.put("ifa", Constants.googleAdID ?: "invalid")
             deviceObject.put("dnt", 0)
             deviceObject.put("ip", "127.0.0.1")
             // Application information
@@ -123,7 +123,7 @@ class BiddingServer {
             // buyeruid is the user bidder token generated on client side, using the `getBidderToken` method from the Audience Network SDK.
             // It's constant through out app session so you could cache it on the client side
             val userObject = JSONObject()
-            userObject.put("buyeruid", Constants.bidderToken)
+            userObject.put("buyeruid", Constants.bidderToken ?: "invalid")
 
             requestObject.put("device", deviceObject)
             requestObject.put("app", appObject)
